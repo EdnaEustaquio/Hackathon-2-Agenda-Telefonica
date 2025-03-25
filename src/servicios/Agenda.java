@@ -8,9 +8,6 @@ public class Agenda {
     private List<Contacto> contactos;
     private int capacidadMaxima;
 
-    public Agenda() {
-        this(10); // Tamaño por defecto 10
-    }
 
     public Agenda(int capacidadMaxima) {
         this.capacidadMaxima = capacidadMaxima;
@@ -18,18 +15,19 @@ public class Agenda {
     }
 
     public boolean anadirContacto(Contacto c) {
-        if (contactos.size() >= capacidadMaxima) {
-            System.out.println("La agenda está llena, no se puede añadir más contactos.");
-            return false;
-        }
         if (contactos.contains(c)) {
             System.out.println("El contacto ya existe.");
             return false;
+        } else if (contactos.size() >= capacidadMaxima) {
+            System.out.println("Agenda llena. No se pueden agregar más contactos.");
+            return false;
+        } else {
+            contactos.add(c);
+            System.out.println("Contacto agregado.");
+            return true;
         }
-        contactos.add(c);
-        System.out.println("Contacto añadido con éxito.");
-        return true;
     }
+
 
     public boolean existeContacto(Contacto c) {
         return contactos.contains(c);
@@ -45,9 +43,9 @@ public class Agenda {
         }
     }
 
-    public void buscaContacto(String nombre) {
+    public void buscaContacto(String nombre, String apellido) {
         for (Contacto c : contactos) {
-            if (c.getNombre().equalsIgnoreCase(nombre)) {
+            if (c.getNombre().equalsIgnoreCase(nombre) && c.getApellido().equalsIgnoreCase(apellido)) {
                 System.out.println("Teléfono: " + c.getTelefono());
                 return;
             }
@@ -63,6 +61,17 @@ public class Agenda {
             System.out.println("No se encontró el contacto.");
             return false;
         }
+    }
+
+    public void modificarTelefono(String nombre, String apellido, String nuevoTelefono) {
+        for (Contacto c : contactos) {
+            if (c.getNombre().equalsIgnoreCase(nombre) && c.getApellido().equalsIgnoreCase(apellido)) {
+                c.setTelefono(nuevoTelefono);
+                System.out.println("Teléfono actualizado correctamente.");
+                return;
+            }
+        }
+        System.out.println("Contacto no encontrado.");
     }
 
     public boolean agendaLlena() {

@@ -18,9 +18,16 @@ public class Contacto {
     public String getNombre() {
         return nombre;
     }
+    public String getApellido() {
+        return apellido;
+    }
 
     public String getTelefono() {
         return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
     }
 
     //Metodos//
