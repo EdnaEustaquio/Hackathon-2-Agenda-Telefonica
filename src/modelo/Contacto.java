@@ -21,6 +21,12 @@ public class Contacto {
         this.telefono = telefono;
     }
     //Getter y Setter//
+     public String getNombre() {
+        return nombre;
+    }
+    public String getApellido() {
+        return apellido;
+    }
     public String getNombreCompleto() {
         return nombre+" "+apellido;
     }
@@ -28,7 +34,9 @@ public class Contacto {
     public String getTelefono() {
         return telefono;
     }
-
+public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
     //Metodos//
 
     @Override //Es necesario sobre escribir este metodo para que funcione System.out.println(contacto)
