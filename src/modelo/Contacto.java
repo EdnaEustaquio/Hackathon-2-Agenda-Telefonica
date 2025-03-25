@@ -22,7 +22,7 @@ public class Contacto {
     }
   
     //Getter y Setter//
-     public String getNombre() {
+    public String getNombre() {
         return nombre;
     }
   

@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Agenda {
     private List<Contacto> contactos;
-    private int capacidadMaxima;
+    private int capacidadMaxima=10;
 
     //Constructores//
     public Agenda(int capacidadMaxima) {
@@ -15,18 +15,6 @@ public class Agenda {
     }
 
     //Métodos//
-      
-    // Metodo para añadir un contacto
-    public void anadirContacto(Contacto c){
-        if (agendaLlena()){
-            System.out.println("La agenda está llena. No es posible añadir otro contacto");
-        } else if (contactos.contains(c)){
-            System.out.println("El nombre del contacto que intenta registrar ya existe en la agenda.");
-        } else {
-            contactos.add(c);
-            System.out.println("Contacto añadido con éxito ♥");
-        }
-    }
 
     // Metodo para saber si existe un contacto
     public boolean existeContacto(Contacto contacto) {
@@ -37,8 +25,21 @@ public class Agenda {
             }
         }
         return false;
-      
+
     }
+
+    // Metodo para añadir un contacto
+    public void anadirContacto(Contacto c){
+        if (agendaLlena()){
+            System.out.println("La agenda está llena. No es posible añadir otro contacto");
+        } else if (existeContacto(c)){
+            System.out.println("El nombre del contacto que intenta registrar ya existe en la agenda.");
+        } else {
+            contactos.add(c);
+            System.out.println("Contacto añadido con éxito ♥");
+        }
+    }
+
 
     // Metodo para listar todos los contactos
     public void listarContactos() {
