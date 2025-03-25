@@ -14,11 +14,6 @@ public class Agenda {
         this.contactos = new ArrayList<>();
     }
 
-    public Agenda(int capacidadMaxima) {
-        this.capacidadMaxima = capacidadMaxima;
-        this.contactos = new ArrayList<>();
-    }
-
     //Métodos//
     public void anadirContacto(Contacto c) {
 
