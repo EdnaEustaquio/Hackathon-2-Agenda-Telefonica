@@ -8,6 +8,7 @@ public class Agenda {
     private List<Contacto> contactos;
     private int capacidadMaxima;
 
+    //Constructores//
     public Agenda() {
         this(10); // Tamaño por defecto 10
     }
@@ -17,22 +18,27 @@ public class Agenda {
         this.contactos = new ArrayList<>();
     }
 
-    public boolean anadirContacto(Contacto c) {
+    //Métodos//
+    public void anadirContacto(Contacto c) {
         if (contactos.size() >= capacidadMaxima) {
             System.out.println("La agenda está llena, no se puede añadir más contactos.");
-            return false;
         }
-        if (contactos.contains(c)) {
+        if (existeContacto(c)) {
             System.out.println("El contacto ya existe.");
-            return false;
+        } else {
+            contactos.add(c);
+            System.out.println("Contacto añadido con éxito.");
         }
-        contactos.add(c);
-        System.out.println("Contacto añadido con éxito.");
-        return true;
     }
 
-    public boolean existeContacto(Contacto c) {
-        return contactos.contains(c);
+    public boolean existeContacto(Contacto contacto) {
+        String nombreCompleto=contacto.getNombreCompleto();
+        for (Contacto c: contactos){
+            if (c.getNombreCompleto().equals(nombreCompleto)){
+                return true;
+            }
+        }
+        return false;
     }
 
     public void listarContactos() {
@@ -45,23 +51,26 @@ public class Agenda {
         }
     }
 
-    public void buscaContacto(String nombre) {
-        for (Contacto c : contactos) {
-            if (c.getNombre().equalsIgnoreCase(nombre)) {
-                System.out.println("Teléfono: " + c.getTelefono());
-                return;
-            }
+    public void buscarContacto(String nombre, String apellido) {
+        Contacto contacto=new Contacto(nombre, apellido);
+            if (existeContacto(contacto)) {
+               for (Contacto c:contactos){
+                   if (c.getNombreCompleto().equals(contacto.getNombreCompleto())){
+                       System.out.println("Teléfono: "+c.getTelefono());
+                   }
+               }
+            } else{
+                System.out.println("Contacto no encontrado");
         }
-        System.out.println("Contacto no encontrado.");
     }
 
-    public boolean eliminarContacto(Contacto c) {
-        if (contactos.remove(c)) {
+    public void eliminarContacto(Contacto c) {
+        if (existeContacto(c)){
+            contactos.remove(c);
             System.out.println("Contacto eliminado con éxito.");
-            return true;
+
         } else {
             System.out.println("No se encontró el contacto.");
-            return false;
         }
     }
 

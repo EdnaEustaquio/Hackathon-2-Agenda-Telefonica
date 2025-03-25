@@ -11,7 +11,7 @@ public class Main {
         servicios.Agenda agenda = new servicios.Agenda(10); // Se puede modificar el tamaño
 
         while (true) {
-            System.out.println("\nMenú de Agenda Telefónica");
+            System.out.println("\nMenú");
             System.out.println("1. Añadir contacto");
             System.out.println("2. Buscar contacto");
             System.out.println("3. Listar contactos");
@@ -27,22 +27,28 @@ public class Main {
                 case 1:
                     System.out.print("Introduce el nombre: ");
                     String nombre = scanner.nextLine();
+                    System.out.print("Introduce el apellido: ");
+                    String apellido=scanner.nextLine();
                     System.out.print("Introduce el teléfono: ");
                     String telefono = scanner.nextLine();
-                    agenda.anadirContacto(new Contacto(nombre,apellido, telefono));
+                    agenda.anadirContacto(new Contacto(nombre, apellido, telefono));
                     break;
                 case 2:
-                    System.out.print("Introduce el nombre a buscar: ");
+                    System.out.print("Introduce el primer nombre: ");
                     nombre = scanner.nextLine();
-                    agenda.buscaContacto(nombre);
+                    System.out.print("Introduce el apellido: ");
+                    apellido = scanner.nextLine();
+                    agenda.buscarContacto(nombre,apellido);
                     break;
                 case 3:
                     agenda.listarContactos();
                     break;
                 case 4:
-                    System.out.print("Introduce el nombre del contacto a eliminar: ");
+                    System.out.print("Introduce el primer nombre del contacto a eliminar: ");
                     nombre = scanner.nextLine();
-                    agenda.eliminarContacto(new Contacto(nombre, ""));
+                    System.out.print("Introduce el apellido del contacto a eliminar: ");
+                    apellido = scanner.nextLine();
+                    agenda.eliminarContacto(new Contacto (nombre, apellido));
                     break;
                 case 5:
                     System.out.println(agenda.agendaLlena() ? "La agenda está llena." : "Aún hay espacio.");
