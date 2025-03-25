@@ -15,9 +15,6 @@ public class Main {
         Agenda agenda = new Agenda(maxContactos);
         int opcion;
 
-
-
-
         do {
 
             System.out.println("\nBIENVENIDO A TU AGENDA TELEFÓNICA DE CONFIANZA");
