@@ -40,6 +40,7 @@ public class Contacto {
         if (this == obj) return true;
         if (obj == null || getClass() != obj.getClass()) return false;
         Contacto contacto = (Contacto) obj;
-        return Objects.equals(nombre, contacto.nombre); // Compara solo el nombre
+        String nombreCompleto=getNombreCompleto();
+        return nombreCompleto.equalsIgnoreCase(contacto.getNombreCompleto()); // Compara solo el nombre
     }
 }

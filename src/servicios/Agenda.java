@@ -20,21 +20,24 @@ public class Agenda {
 
     //Métodos//
     public void anadirContacto(Contacto c) {
+
         if (contactos.size() >= capacidadMaxima) {
             System.out.println("La agenda está llena, no se puede añadir más contactos.");
         }
-        if (existeContacto(c)) {
-            System.out.println("El contacto ya existe.");
-        } else {
-            contactos.add(c);
-            System.out.println("Contacto añadido con éxito.");
+         else {
+            if (existeContacto(c)) {
+                System.out.println("El contacto ya existe.");
+            } else {
+                contactos.add(c);
+                System.out.println("Contacto añadido con éxito.");
+            }
         }
     }
 
     public boolean existeContacto(Contacto contacto) {
-        String nombreCompleto=contacto.getNombreCompleto();
+        String nombreCompleto=contacto.getNombreCompleto().toLowerCase();
         for (Contacto c: contactos){
-            if (c.getNombreCompleto().equals(nombreCompleto)){
+            if (c.getNombreCompleto().toLowerCase().equals(nombreCompleto)){
                 return true;
             }
         }
@@ -55,7 +58,7 @@ public class Agenda {
         Contacto contacto=new Contacto(nombre, apellido);
             if (existeContacto(contacto)) {
                for (Contacto c:contactos){
-                   if (c.getNombreCompleto().equals(contacto.getNombreCompleto())){
+                   if (c.getNombreCompleto().equalsIgnoreCase(contacto.getNombreCompleto())){
                        System.out.println("Teléfono: "+c.getTelefono());
                    }
                }
@@ -68,7 +71,6 @@ public class Agenda {
         if (existeContacto(c)){
             contactos.remove(c);
             System.out.println("Contacto eliminado con éxito.");
-
         } else {
             System.out.println("No se encontró el contacto.");
         }
