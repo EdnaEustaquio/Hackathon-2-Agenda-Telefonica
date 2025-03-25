@@ -4,11 +4,14 @@ import java.util.Objects;
 
 public class Contacto {
     //Atributos//
-    private String nombre;
     private String telefono;
+    private String nombre;
+    private String apellido;
+
     //Constructor//
-    public Contacto(String nombre, String telefono) {
-        this.nombre = nombre;
+    public Contacto(String nombre,String apellido, String telefono) {
+        this.nombre=nombre;
+        this.apellido=apellido;
         this.telefono = telefono;
     }
     //Getter y Setter//
@@ -16,22 +19,14 @@ public class Contacto {
         return nombre;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
     public String getTelefono() {
         return telefono;
-    }
-
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
     }
 
     //Metodos//
     @Override
     public String toString(){
-        return "Nombre: "+nombre+", Teléfono: "+telefono;
+        return "Nombre: "+nombre+" "+apellido+", Teléfono: "+telefono;
     }
 
     @Override
