@@ -9,27 +9,35 @@ public class Contacto {
     private String apellido;
     private String telefono;
 
-    //Constructor
-    public Contacto(String nombre, String apellido, String telefono) {
+    //Constructor//
+    public Contacto(String nombre, String apellido) {
         this.nombre = nombre;
         this.apellido = apellido;
+    }
+
+    public Contacto(String nombre,String apellido, String telefono) {
+        this.nombre=nombre;
+        this.apellido=apellido;
         this.telefono = telefono;
     }
-
-    //Getters
-    public String getNombre() {
+  
+    //Getter y Setter//
+     public String getNombre() {
         return nombre;
     }
-
+  
     public String getApellido() {
         return apellido;
+    }
+  
+    public String getNombreCompleto() {
+        return nombre+" "+apellido;
     }
 
     public String getTelefono() {
         return telefono;
     }
-
-    //Setters
+  
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
@@ -41,18 +49,21 @@ public class Contacto {
     public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
+  
+    //Metodos//
 
-    // Comparar contactos por nombre y apellido
-    @Override
-    public boolean equals(Object obj){
-        if (this == obj) return true; //Caso 1: son exactamente el mismo objeto
-        if (obj==null|| getClass() != obj.getClass()) return false; //Caso 2: Argumento no valido
-        Contacto contacto = (Contacto) obj; //Lo definimos dentro de la funcion como clase Contacto
-        return nombre.equalsIgnoreCase(contacto.nombre);
-    }
-
-    @Override
+    @Override // Es necesario sobre escribir este metodo para que funcione System.out.println(contacto)
     public String toString(){
         return "Nombre: " + nombre + " " + apellido + ", Teléfono: " + telefono;
+    }
+      
+    @Override // Es necesario sobreescribir este metodo para que funcione contactos.remove(c) y se elimine el contacto
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Contacto contacto = (Contacto) obj;
+        String nombreCompleto=getNombreCompleto();
+        return nombreCompleto.equalsIgnoreCase(contacto.getNombreCompleto()); // Compara solo el nombre
+
     }
 }
