@@ -9,8 +9,9 @@ public class Agenda {
     private int capacidadMaxima;
 
     //Constructores//
-    public Agenda() {
-        this(10); // Tamaño por defecto 10
+  public Agenda(int capacidadMaxima) {
+        this.capacidadMaxima = capacidadMaxima;
+        this.contactos = new ArrayList<>();
     }
 
     public Agenda(int capacidadMaxima) {
@@ -82,5 +83,16 @@ public class Agenda {
 
     public int espacioLibre() {
         return capacidadMaxima - contactos.size();
+    }
+
+       public void modificarTelefono(String nombre, String apellido, String nuevoTelefono) {
+        for (Contacto c : contactos) {
+            if (c.getNombre().equalsIgnoreCase(nombre) && c.getApellido().equalsIgnoreCase(apellido)) {
+                c.setTelefono(nuevoTelefono);
+                System.out.println("Teléfono actualizado correctamente.");
+                return;
+            }
+        }
+        System.out.println("Contacto no encontrado.");
     }
 }
